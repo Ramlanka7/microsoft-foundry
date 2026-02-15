@@ -42,8 +42,9 @@ public class AzureOpenAIService : IAzureOpenAIService
         else
         {
             // Use API Key (for development)
-            var apiKey = configuration["AzureOpenAI:ApiKey"] 
-                ?? throw new ArgumentNullException("AzureOpenAI:ApiKey is missing");
+            var apiKey = configuration["AzureOpenAI:ApiKey"];
+            if (string.IsNullOrEmpty(apiKey))
+                throw new ArgumentException("AzureOpenAI:ApiKey is missing or empty");
             _logger.LogInformation("Using API Key for Azure OpenAI");
             _client = new OpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey));
         }

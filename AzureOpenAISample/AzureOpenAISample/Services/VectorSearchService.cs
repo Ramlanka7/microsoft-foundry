@@ -52,8 +52,9 @@ public class VectorSearchService : IVectorSearchService
         }
         else
         {
-            var apiKey = configuration["AzureCognitiveSearch:ApiKey"] 
-                ?? throw new ArgumentNullException("Search API Key not configured");
+            var apiKey = configuration["AzureCognitiveSearch:ApiKey"];
+            if (string.IsNullOrEmpty(apiKey))
+                throw new ArgumentException("Search API Key is missing or empty");
             _logger.LogInformation("Using API Key for Vector Search");
             var credential = new AzureKeyCredential(apiKey);
             _searchClient = new SearchClient(endpoint, _indexName, credential);

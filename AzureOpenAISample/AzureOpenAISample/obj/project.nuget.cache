@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "HGnWn+KZg9c=",
+  "dgSpecHash": "1VglUFa/LaI=",
   "success": true,
   "projectFilePath": "/Users/ramlanka/Desktop/microsoft-foundry/AzureOpenAISample/AzureOpenAISample/AzureOpenAISample.csproj",
   "expectedPackageFiles": [
     "/Users/ramlanka/.nuget/packages/azure.ai.inference/1.0.0-beta.1/azure.ai.inference.1.0.0-beta.1.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.ai.openai/1.0.0-beta.17/azure.ai.openai.1.0.0-beta.17.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.core/1.42.0/azure.core.1.42.0.nupkg.sha512",
+    "/Users/ramlanka/.nuget/packages/azure.extensions.aspnetcore.configuration.secrets/1.3.0/azure.extensions.aspnetcore.configuration.secrets.1.3.0.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.identity/1.10.4/azure.identity.1.10.4.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.search.documents/11.5.1/azure.search.documents.11.5.1.nupkg.sha512",
+    "/Users/ramlanka/.nuget/packages/azure.security.keyvault.secrets/4.6.0/azure.security.keyvault.secrets.4.6.0.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.storage.blobs/12.19.1/azure.storage.blobs.12.19.1.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/azure.storage.common/12.18.1/azure.storage.common.12.18.1.nupkg.sha512",
     "/Users/ramlanka/.nuget/packages/microsoft.applicationinsights/2.21.0/microsoft.applicationinsights.2.21.0.nupkg.sha512",
