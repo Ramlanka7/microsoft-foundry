@@ -1,6 +1,44 @@
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using AzureOpenAISample.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load secrets from Azure Key Vault when configured
+var keyVaultEnabled = builder.Configuration.GetValue<bool>("KeyVault:Enabled");
+var keyVaultUri = builder.Configuration["KeyVault:Uri"];
+var keyVaultName = builder.Configuration["KeyVault:Name"];
+
+if (keyVaultEnabled && (!string.IsNullOrWhiteSpace(keyVaultUri) || !string.IsNullOrWhiteSpace(keyVaultName)))
+{
+    try
+    {
+        var vaultUri = new Uri(!string.IsNullOrWhiteSpace(keyVaultUri)
+            ? keyVaultUri!
+            : $"https://{keyVaultName}.vault.azure.net/");
+
+        var reloadMinutes = builder.Configuration.GetValue<int>("KeyVault:ReloadIntervalMinutes", 30);
+        var secretClient = new SecretClient(vaultUri, new DefaultAzureCredential());
+
+        builder.Configuration.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions
+        {
+            ReloadInterval = TimeSpan.FromMinutes(reloadMinutes)
+        });
+
+        Console.WriteLine($"✓ Successfully connected to Key Vault: {vaultUri}");
+    }
+    catch (Azure.Identity.CredentialUnavailableException ex)
+    {
+        Console.WriteLine($"⚠ Key Vault authentication failed. For local development:");
+        Console.WriteLine($"  1. Set KeyVault:Enabled=false in appsettings.Development.json, OR");
+        Console.WriteLine($"  2. Install Azure CLI (https://aka.ms/azure-cli) and run: az login");
+        Console.WriteLine($"  3. Or configure credentials via environment variables");
+        Console.WriteLine($"");
+        Console.WriteLine($"Using configuration from appsettings files instead.");
+        Console.WriteLine($"Details: {ex.Message}");
+    }
+}
 
 // Add services to the container.
 builder.Services.AddControllers();

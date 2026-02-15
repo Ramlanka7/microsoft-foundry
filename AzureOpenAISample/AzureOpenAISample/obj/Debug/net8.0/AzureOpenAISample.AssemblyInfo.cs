@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureOpenAISample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c51b9ddc77ea3c3c5cdf6683899aff0746d8d353")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureOpenAISample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureOpenAISample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

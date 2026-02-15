@@ -41,8 +41,9 @@ public class AzureCognitiveSearchService : IAzureCognitiveSearchService
         }
         else
         {
-            var apiKey = configuration["AzureCognitiveSearch:ApiKey"] 
-                ?? throw new ArgumentNullException("AzureCognitiveSearch:ApiKey");
+            var apiKey = configuration["AzureCognitiveSearch:ApiKey"];
+            if (string.IsNullOrEmpty(apiKey))
+                throw new ArgumentException("AzureCognitiveSearch:ApiKey is missing or empty");
             _logger.LogInformation("Using API Key for Cognitive Search");
             _searchClient = new SearchClient(endpoint, indexName, new AzureKeyCredential(apiKey));
         }
