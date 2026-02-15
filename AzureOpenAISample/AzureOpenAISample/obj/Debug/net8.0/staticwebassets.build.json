@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "X9WU/DElGNIH76bUqUkqoOvhp26Fb/q0zczNxdtxjt4=",
+  "Source": "AzureOpenAISample",
+  "BasePath": "_content/AzureOpenAISample",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
